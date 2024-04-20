@@ -1,0 +1,237 @@
+<!--<div class="container">
+
+    <div class="card o-hidden border-0 shadow-lg my-5">
+        <div class="card-body p-0">
+            <div class="row">
+                <div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+                <div class="col-lg-7">
+                    <div class="p-5">
+                        <div class="text-center">
+                            <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                        </div>
+                        <form class="user"  #registrationForm="ngForm" (ngSubmit)="registerUser(registrationForm)">
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="text" class="form-control form-control-user" id="exampleFirstName"
+                                        placeholder="First Name">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control form-control-user" id="exampleLastName"
+                                        placeholder="Last Name">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                    placeholder="Email Address">
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-6 mb-3 mb-sm-0">
+                                    <input type="password" class="form-control form-control-user"
+                                        id="exampleInputPassword" placeholder="Password">
+                                </div>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control form-control-user"
+                                        id="exampleRepeatPassword" placeholder="Repeat Password">
+                                </div>
+                            </div>
+                            <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                Register Account
+                            </a>
+                            <hr>
+                            <a href="index.html" class="btn btn-google btn-user btn-block">
+                                <i class="fab fa-google fa-fw"></i> Register with Google
+                            </a>
+                            <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                            </a>
+                        </form>
+                        <hr>
+                        <div class="text-center">
+                            <a class="small" href="forgot-password.html">Forgot Password?</a>
+                        </div>
+                        <div class="text-center">
+                            <a class="small" href="login.html">Already have an account? Login!</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>-->
+<!-- register.component.html 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/index']">Registration and Login System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/login']">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br /><br /><br />
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Registration</h2>
+            </div>
+            <div *ngIf="success">
+                <div class="alert alert-info">
+                    You have successfully registered our app!
+                </div>
+            </div>
+            <div class="card-body">
+                <form (ngSubmit)="submitForm()" #registerForm="ngForm">
+                    <div class="form-group mb-3">
+                        <label class="form-label">First Name</label>
+                        <input
+                                class="form-control"
+                                id="firstname"
+                                name="firstname"
+                                placeholder="Enter first name"
+                                [(ngModel)]="user.firstname"
+                                required
+                        />
+                        <div *ngIf="registerForm?.controls['firstname']?.invalid && (registerForm?.controls['firstname']?.dirty || registerForm?.controls['firstname']?.touched)" class="text-danger">
+                            <p *ngIf="registerForm?.controls['firstname']?.errors?.['required']">First Name is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input
+                                class="form-control"
+                                id="lastName"
+                                name="lastName"
+                                placeholder="Enter last name"
+                                [(ngModel)]="user.lastname"
+                                required
+                        />
+                        <div *ngIf="registerForm.controls['lastName'].invalid && (registerForm.controls['lastName'].dirty || registerForm.controls['lastName'].touched)" class="text-danger">
+                            <p *ngIf="registerForm.controls['lastName'].errors.required">Last Name is required</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input
+                                class="form-control"
+                                id="email"
+                                name="email"
+                                placeholder="Enter email address"
+                                [(ngModel)]="user.email"
+                                required
+                                email
+                        />
+                        <div *ngIf="registerForm.controls['email'].invalid && (registerForm.controls['email'].dirty || registerForm.controls['email'].touched)" class="text-danger">
+                            <p *ngIf="registerForm.controls['email'].errors['required']">Email is required</p>
+                            <p *ngIf="registerForm.controls['email'].errors.email">Invalid email</p>
+                        </div>
+                        
+                    </div>
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">Password</label>
+                        <input
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                placeholder="Enter password"
+                                [(ngModel)]="user.password"
+                                type="password"
+                                required
+                                minlength="6"
+                        />
+                        <div *ngIf="registerForm.controls['password'].invalid && (registerForm.controls['password'].dirty || registerForm.controls['password'].touched)" class="text-danger">
+                            <p *ngIf="registerForm.controls['password'].errors.required">Password is required</p>
+                            <p *ngIf="registerForm.controls['password'].errors.minlength">Password must be at least 6 characters long</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+                        <span>Already registered? <a [routerLink]="['/login']">Login here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/index']">Registration and Login System</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" [routerLink]="['/login']">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br /><br /><br />
+<div class="container">
+    <div class="row col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-header">
+                <h2 class="text-center">Registration</h2>
+            </div>
+            <div *ngIf="success">
+                <div class="alert alert-info">
+                    You have successfully registered our app!
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="registerForm" (ngSubmit)="submitForm()">
+                    <div class="form-group mb-3">
+                        <label class="form-label">First Name</label>
+                        <input formControlName="firstname" class="form-control" placeholder="Enter first name">
+                        <div *ngIf="registerForm.get('firstname')?.invalid && (registerForm.get('firstname')?.dirty || registerForm.get('firstname')?.touched)" class="text-danger">
+                            <p *ngIf="registerForm.get('firstname')?.errors?.['required']">First Name is required</p>
+                        </div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">Last Name</label>
+                        <input formControlName="lastname" class="form-control" placeholder="Enter last name">
+                        <div *ngIf="registerForm.get('lastname')?.invalid && (registerForm.get('lastname')?.dirty || registerForm.get('lastname')?.touched)" class="text-danger">
+                            <p *ngIf="registerForm.get('lastname')?.errors?.['required']">Last Name is required</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label class="form-label">Email</label>
+                        <input formControlName="email" class="form-control" placeholder="Enter email address">
+                        <div *ngIf="registerForm.get('email')?.invalid && (registerForm.get('email')?.dirty || registerForm.get('email')?.touched)" class="text-danger">
+                            <p *ngIf="registerForm.get('email')?.errors?.['required']">Email is required</p>
+                            <p *ngIf="registerForm.get('email')?.errors?.['email']">Invalid email</p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mb-3">
+                        <label class="form-label">Password</label>
+                        <input formControlName="password" class="form-control" placeholder="Enter password" type="password">
+                        <div *ngIf="registerForm.get('password')?.invalid && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)" class="text-danger">
+                            <p *ngIf="registerForm.get('password')?.errors?.['required']">Password is required</p>
+                            <p *ngIf="registerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long</p>
+                        </div>
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" [disabled]="registerForm.invalid">Register</button>
+                        <span>Already registered? <a [routerLink]="['/login']">Login here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

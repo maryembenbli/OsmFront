@@ -1,0 +1,13 @@
+.table-container {
+    overflow-x: scroll;
+    width: 100%;
+    max-width: 100%; /* Ensure the table container does not exceed its parent's width */
+}
+
+.table-container table {
+    min-width: 100%; /* Ensure the table takes up the full width of its container */
+}
+
+.table-container table th, .table-container table td {
+    white-space: nowrap; /* Prevent line breaks for table cell content */
+}
