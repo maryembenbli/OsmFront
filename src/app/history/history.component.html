@@ -35,7 +35,7 @@
                                                         <th>Subject</th>
                                                          <th>Status</th>
                                                          <th>Email</th>
-                                                         <th>Attachment</th>
+                                                         
                                                     </tr>
                                             </thead>
                                             <tbody>
@@ -45,7 +45,13 @@
                                                     <td>{{ history.emailDetails?.subject }}</td>
                                                     <td>{{ history.status }}</td>
                                                        <td>{{ history.emailDetails?.recipient | json }}</td>
-                                                    <td>{{ history.emailDetails?.attachment| json }}</td>
+                                                       <td>
+                                                        <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" *ngIf="history.emailDetails?.attachment"
+                                                        [href]="history.emailDetails.attachment" 
+                                                        download><i
+                                                        class="fas fa-download fa-sm text-white-50"></i></a> 
+                                                     
+                                                    </td>
                                                     <!--<td>{{ history.emailDetails | json }}</td>-->
                                                   </tr>
                                                  <!-- <tr *ngFor="let history of historys"  >

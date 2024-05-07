@@ -1,0 +1,29 @@
+
+<!--<p style="color: red; font-weight: bold; font-family: 'Courier New', Courier, monospace;" >{{ data.errorMessage }}</p>
+<button class="btn btn-primary" mat-button [mat-dialog-close]="'close'">Close</button>
+
+ <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog" role="document">
+     <div class="modal-content">
+         <div class="modal-header">
+             <h5 class="modal-title" id="exampleModalLabel" style="color: red;">Error</h5>
+             <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                 <span aria-hidden="true">×</span>
+             </button>
+         </div>
+         <p style="color: red; font-weight: bold; font-family: 'Courier New', Courier, monospace;" >{{ data.errorMessage }}</p>
+         <div class="modal-footer">
+            <button  class="btn btn-primary" mat-button [mat-dialog-close]="'close'">Close</button>
+        
+         </div>
+     </div>
+ </div>
+</div>-->
+<h2 style="color: red;" mat-dialog-title>Error</h2>
+<mat-dialog-content>
+    {{ data.errorMessage }}
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button  class="btn btn-primary" mat-button  [mat-dialog-close]="'close'" cdkFocusInitial>Close</button>
+</mat-dialog-actions>

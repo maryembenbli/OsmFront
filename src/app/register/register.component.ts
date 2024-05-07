@@ -51,6 +51,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../user/user.service';
 import { User } from '../user/user';
+import { Profil } from '../service/profil';
+
 
 @Component({
   selector: 'app-register',
@@ -58,8 +60,11 @@ import { User } from '../user/user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  registerForm!: FormGroup; // Declare registerForm as a FormGroup
-  user: User = new User('', '', '', ''); // Initialize user object with default values
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
+  }
+  /*registerForm!: FormGroup; // Declare registerForm as a FormGroup
+  user: User = new User(0,'', '', '', '',new Profil('')); // Initialize user object with default values
   success: boolean = false; // Flag to show success message
 
   constructor(private formBuilder: FormBuilder, private userService: UserService, private router: Router) {}
@@ -69,7 +74,8 @@ export class RegisterComponent implements OnInit {
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]]
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      profil:['']
     });
   }
 
@@ -84,10 +90,12 @@ export class RegisterComponent implements OnInit {
     this.user.lastname = this.registerForm.value.lastname;
     this.user.email = this.registerForm.value.email;
     this.user.password = this.registerForm.value.password;
-
+    this.user.profile.titre=this.registerForm.value.profil;
     // Call the register service method
     this.userService.registerUser(this.user).subscribe(
       () => {
+        console.log('Registration successful');
+        alert("Registration successful");
         this.success = true;
         setTimeout(() => {
           this.router.navigate(['/login']); // Redirect to login page after successful registration
@@ -95,10 +103,14 @@ export class RegisterComponent implements OnInit {
       },
       (error) => {
         console.error('Error occurred while registering user:', error);
-        // Handle error here, maybe show error message to user
+        if (error.status === 409) {
+          alert("Registration failed: User with the same email already exists.");
+        } else {
+          alert("Registration failed. Please try again.");
+        }
       }
     );
-  }
+  }*/
 }
 
 

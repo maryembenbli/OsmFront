@@ -1,0 +1,53 @@
+      <div class="container">
+        <h2>Create User</h2>
+        <form (ngSubmit)="createUser()">
+          <div class="form-group">
+            <label for="firstname">First Name:</label>
+            <input type="text" class="form-control" id="firstname" name="firstname" [(ngModel)]="newUser.firstname" required>
+          </div>
+          <div class="form-group">
+            <label for="lastname">Last Name:</label>
+            <input type="text" class="form-control" id="lastname" name="lastname" [(ngModel)]="newUser.lastname" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" [(ngModel)]="newUser.email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <div class="input-group">
+                <input 
+                    class="form-control" 
+                    [type]="showPassword ? 'text' : 'password'" 
+                    id="password" 
+                    name="password" 
+                    [(ngModel)]="newUser.password" 
+                    required
+                >
+                <div class="input-group-append">
+                    <span 
+                        class="input-group-text" 
+                        (click)="toggleShow()"
+                        style="cursor: pointer;"
+                    >
+                        <i class="fas" [ngClass]="{'fa-eye': !showPassword, 'fa-eye-slash': showPassword}"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+          <div class="form-group">
+         
+            <label for="profile">Profile:</label>
+            <select class="form-control" id="profile" name="profile" [(ngModel)]="newUser.profil" required>
+              <option value="" disabled selected>Select a profile</option>
+              <option *ngFor="let item of profilesAndGroups" [ngValue]="item">{{item.titre }}</option>
+            </select>
+            
+          
+          </div>
+        
+          <button type="submit" class="btn btn-primary">Create User</button>
+          <div *ngIf="errorMessage" class="text-danger mt-2">{{ errorMessage }}</div>
+        </form>
+      </div>
+      

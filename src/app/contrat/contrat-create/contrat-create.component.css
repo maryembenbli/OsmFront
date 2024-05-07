@@ -1,0 +1,26 @@
+.success-message {
+    background-color: #dff0d8;
+    color: #3c763d;
+    border: 1px solid #d6e9c6;
+    border-radius: 4px;
+    padding: 10px;
+    margin-top: 10px;
+  }
+  mat-dialog-content {
+    padding: 24px;
+  }
+  .input-group {
+    position: relative;
+  }
+  
+  .error-message {
+    display: inline-block;
+    margin-left: 10px; /* Adjust this value as needed */
+  
+    
+  }
+  
+  .text-danger {
+    color: red;
+  }
+  

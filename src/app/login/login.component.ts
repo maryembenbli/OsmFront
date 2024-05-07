@@ -61,6 +61,8 @@ export class LoginComponent implements OnInit {
         error => {
           console.log('Error occurred while logging in:', error);
           this.isLoading = false;
+          alert('Error occurred while logging in. Please try again.');
+          
         }
       );
     /*  this.userService.loginUser(this.form['email'].value, this.form['password'].value)

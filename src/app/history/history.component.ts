@@ -37,5 +37,34 @@ export class HistoryComponent implements OnInit{
     
   )}
 
+ 
+getAttachmentUrl(attachmentPath: string): string {
+  attachmentPath = attachmentPath.replace(/\\/g, '/');
+  
+  
+  const baseUrl = 'http://localhost:4200/';
 
+  return baseUrl + encodeURIComponent(attachmentPath);
 }
+/*getAttachmentUrl(attachmentPath: string): string {
+  if (attachmentPath) {
+      attachmentPath = attachmentPath.replace(/\\/g, '/');
+      
+     
+      if (attachmentPath.startsWith('http://') || attachmentPath.startsWith('https://')) {
+          return attachmentPath; // If it's already a URL, return it as is
+      } else {
+          return attachmentPath = attachmentPath.replace(/\\/g, '/');// 'http://localhost:4200/' + encodeURIComponent(attachmentPath); Modify the base URL as needed
+      }
+  } else {
+      
+      return ''; // or return some default URL or handle it based on your requirements
+  }*/
+}
+
+
+
+
+
+
+

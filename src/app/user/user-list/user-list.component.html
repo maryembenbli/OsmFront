@@ -51,9 +51,9 @@
                                                         <th>Fist Name</th>
                                                         <th>Last Name</th>
                                                         <th>Email</th>
-                                                        <th>Password</th>
-                                                        <th>Role</th>
-                                                     
+                                                        <th>Profile</th>
+                                                        
+                                                     <th>Action</th>
                                                     </tr>
                                             </thead>
                                             <tbody>
@@ -62,8 +62,14 @@
                                                         <td>{{ user.firstname }}</td>
                                                         <td>{{ user.lastname }}</td>
                                                         <td>{{ user.email }}</td>
-                                                        <td>{{ user.password }}</td>
-                                                        <td></td>
+                                                        <td>{{ user.profil?.titre  }}</td><!--*ngFor="let profil of user.profile"-->
+                                                                                                          <td> <a (click)="updateUser(user.id)" class="btn btn-info btn-circle">
+                                                            <i class="fas fa-info-circle"></i>
+                                                        </a>  
+                                                        <a (click)="deleteUser(user.id)"class="btn btn-danger btn-circle">
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </td>
                                                     </tr>
                                                 </ng-container>
                                                 <ng-template #noUsersFound>

@@ -16,4 +16,10 @@ export class ProductService {
   searchProductById(idProduit: string): Observable<Product[]> {
     return this.http.get<Product[]>(`${this.baseURL}/search?idProduit=${idProduit}`);
   }
+  getProductListByNature(nature: string): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseURL}/searchnature?natureProduit=${nature}`);
+  }
+  getProductListByCatalogId(catalogId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.baseURL}/catalog/${catalogId}`);
+  }
 }

@@ -16,6 +16,9 @@ export class UserService {
   registerUser(user: any): Observable<any> {
     return this.http.post(`${this.baseUrl}/register`, user);
   }
+  /*registerUserWithProfile(user: any, profilTitre: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/registerWithProfil?profilTitre=${profilTitre}`, user);
+  }*/
   loginUser(email: string, password: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/login`, { email, password }, { responseType: 'text' });
   }
@@ -24,6 +27,15 @@ export class UserService {
   }
   searchUser(query: string): Observable<User[]> {
     return this.http.get<User[]>(`${this.baseUrl}/users/search?query=${query}`);
+  }
+  updateUser(userId: number, user: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/${userId}`, user);
+  }
+  getUser(userId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${userId}`);
+  }
+  deleteUser(userId: number): Observable<any> {
+    return this.http.delete(`${this.baseUrl}/${userId}`);
   }
   
  
